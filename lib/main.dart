@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:fc_survey/question.dart';
+
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var _qIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    final List<String> questions = [
+    var questions = [
       'What\'s your favorite color?',
       'What\'s your favorite dog breed?',
     ];
@@ -17,22 +26,27 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            Text('Question...'),
+            Question(questions[_qIndex]),
             RaisedButton(
               child: Text('Answer 1'),
-              onPressed: () => print('Answer 1 chosen...'),
+              onPressed: _answerQuestion,
             ),
             RaisedButton(
               child: Text('Answer 2'),
-              onPressed: () => print('Answer 2 chosen...'),
+              onPressed: _answerQuestion,
             ),
             RaisedButton(
               child: Text('Answer 3'),
-              onPressed: () => print('Answer 3 chosen...'),
+              onPressed: _answerQuestion,
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _answerQuestion() {
+    setState(() => _qIndex++);
+    print(_qIndex);
   }
 }
