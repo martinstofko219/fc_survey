@@ -9,6 +9,7 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 16.0, right: 16.0),
       width: double.infinity,
       child: RaisedButton(
         color: Theme.of(context).primaryColor,

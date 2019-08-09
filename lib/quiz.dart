@@ -14,6 +14,7 @@ class Quiz extends StatelessWidget {
     return Column(
       children: <Widget>[
         Question(question['question']),
+        SizedBox(height: 24.0),
         ...(question['answers'] as List<Map<String, dynamic>>)
             .map((Map<String, dynamic> a) =>
                 Answer(a['text'], () => answerFunc(a['score'])))
